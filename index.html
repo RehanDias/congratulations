@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Satu pagi yang sudah kamu lewati dengan baik.">
+    <meta name="theme-color" content="#FCFAFD">
+    <title>Untuk Ka Saa</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23F0EAF7'/%3E%3Cpath d='M18 18h8v12l11-12h10L34 32l14 14H37L26 34v12h-8z' fill='%23715887'/%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        lavender: {
+                            50: '#F8F5FC',
+                            100: '#F0EAF7',
+                            300: '#D8C8E8',
+                            500: '#B49ACA',
+                            700: '#715887'
+                        },
+                        ivory: '#FCFAFD',
+                        gold: {
+                            300: '#DECBAA',
+                            500: '#C5A36D'
+                        },
+                        charcoal: '#332E38',
+                        softtext: '#5C5363'
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --ivory: #FCFAFD;
+            --lavender-50: #F8F5FC;
+            --lavender-100: #F0EAF7;
+            --lavender-300: #D8C8E8;
+            --lavender-500: #B49ACA;
+            --lavender-700: #715887;
+            --gold-300: #DECBAA;
+            --gold-500: #C5A36D;
+            --charcoal: #332E38;
+            --softtext: #5C5363;
+        }
+
+        html {
+            scroll-behavior: auto;
+        }
+
+        body {
+            background-color: var(--ivory);
+            color: var(--charcoal);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        main, section, .bg-decor, .texture-grain {
+            max-width: 100vw;
+        }
+
+        ::selection {
+            background: var(--lavender-300);
+            color: var(--charcoal);
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--lavender-300);
+            border-radius: 10px;
+        }
+
+        .bg-decor {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            pointer-events: none;
+        }
+
+        .blob-1 {
+            width: 380px;
+            height: 380px;
+            background: var(--lavender-500);
+            opacity: 0.24;
+            top: -120px;
+            left: -100px;
+        }
+
+        .blob-2 {
+            width: 320px;
+            height: 320px;
+            background: var(--gold-500);
+            opacity: 0.14;
+            bottom: -80px;
+            right: -100px;
+        }
+
+        .texture-grain {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--lavender-700);
+            width: 0%;
+            z-index: 60;
+            pointer-events: none;
+        }
+
+        .min-h-svh {
+            min-height: 100svh;
+        }
+
+        .editorial-text {
+            max-width: 62ch;
+        }
+
+        p {
+            line-height: 1.8;
+        }
+
+        .btn-open {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            transition: color 0.4s ease, border-color 0.4s ease;
+        }
+        .btn-open::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--lavender-700);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .btn-open:hover::before,
+        .btn-open:focus-visible::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        .btn-open:hover,
+        .btn-open:focus-visible {
+            color: var(--ivory);
+            border-color: var(--lavender-700);
+        }
+        .btn-open:disabled {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--lavender-700);
+            outline-offset: 3px;
+        }
+
+        #main-content {
+            display: none;
+            opacity: 0;
+        }
+
+        /* Envelope, structured for GSAP-only animation, no CSS transition on transform/opacity */
+        .envelope-wrap {
+            width: min(280px, 78vw);
+            perspective: 1200px;
+            overflow: visible;
+        }
+        .envelope-shell {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 300 / 210;
+            transform-style: preserve-3d;
+            overflow: visible;
+        }
+        .env-body {
+            position: absolute;
+            left: 0;
+            top: 19%;
+            width: 100%;
+            height: 71%;
+            background: var(--lavender-50);
+            border: 2px solid var(--lavender-300);
+            border-radius: 14px;
+            z-index: 2;
+            box-shadow: 0 10px 26px rgba(113, 88, 135, 0.1);
+            overflow: hidden;
+        }
+        .env-body::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(32deg, transparent 49.5%, rgba(216, 200, 232, 0.65) 50%, transparent 50.8%),
+                linear-gradient(-32deg, transparent 49.5%, rgba(216, 200, 232, 0.65) 50%, transparent 50.8%);
+            pointer-events: none;
+        }
+        #letter-card {
+            position: absolute;
+            left: 14%;
+            top: 24%;
+            width: 72%;
+            height: 64%;
+            background: var(--ivory);
+            border: 2px solid var(--lavender-300);
+            border-radius: 8px;
+            z-index: 1;
+            box-shadow: 0 6px 18px rgba(113, 88, 135, 0.14);
+            transform-origin: center bottom;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+        #envelope-flap {
+            position: absolute;
+            left: 0;
+            top: 19%;
+            width: 100%;
+            height: 39%;
+            background: var(--lavender-100);
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            filter: drop-shadow(0 2px 2px rgba(113, 88, 135, 0.12));
+            z-index: 3;
+            transform-origin: top center;
+            backface-visibility: hidden;
+            transform: translateZ(1px);
+        }
+
+        .opening-fallback-hide {
+            transition: opacity 0.5s ease;
+            opacity: 0;
+        }
+
+        .hero-glow {
+            opacity: 0.16;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-charcoal">
+
+    <noscript>
+        <style>
+            #opening-screen { display: none !important; }
+            #main-content { display: block !important; opacity: 1 !important; }
+        </style>
+    </noscript>
+
+    <div class="bg-decor" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+    <div class="texture-grain" aria-hidden="true"></div>
+
+    <div id="progress-bar" aria-hidden="true"></div>
+
+    <section id="opening-screen" class="fixed inset-0 z-40 flex flex-col items-center justify-center bg-ivory w-full h-[100svh] px-5">
+        <div class="text-center max-w-md w-full">
+            <h1 class="font-serif text-3xl md:text-4xl text-charcoal mb-3 opacity-0" id="open-title">
+                Untuk Ka Saa
+            </h1>
+            <p class="font-serif italic text-lg md:text-xl text-lavender-700 mb-8 opacity-0" id="open-subtitle">
+                Ada satu hal yang ingin aku bilang setelah pagi yang panjang ini.
+            </p>
+
+            <div class="envelope-wrap mx-auto mb-10 opacity-0" id="open-envelope" aria-hidden="true">
+                <div class="envelope-shell">
+                    <div id="letter-card"></div>
+                    <div class="env-body"></div>
+                    <div id="envelope-flap"></div>
+                </div>
+            </div>
+
+            <button id="btn-open-letter" type="button" class="btn-open opacity-0 border border-lavender-700/50 text-charcoal px-8 py-3 rounded-full font-normal tracking-[0.14em] text-sm uppercase focus-visible:outline focus-visible:outline-2 focus-visible:outline-lavender-700" aria-label="Buka pesan untuk Ka Saa">
+                Baca Pesannya
+            </button>
+        </div>
+    </section>
+
+    <main id="main-content" class="relative z-10">
+
+        <section class="min-h-svh flex flex-col justify-center items-center px-5 md:px-6 pt-16 pb-14 text-center relative">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 md:w-96 md:h-96 pointer-events-none hero-glow" aria-hidden="true">
+                <svg viewBox="0 0 100 100" class="w-full h-full text-gold-300">
+                    <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 4"/>
+                    <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="0.2"/>
+                    <path d="M50 10 L50 20 M50 80 L50 90 M10 50 L20 50 M80 50 L90 50" stroke="currentColor" stroke-width="0.5"/>
+                </svg>
+            </div>
+
+            <div class="max-w-3xl relative z-10">
+                <span class="block font-sans text-sm uppercase tracking-[0.18em] text-lavender-700 mb-6">
+                    Setelah interview tadi
+                </span>
+                <h2 tabindex="-1" id="hero-title" class="font-serif text-[clamp(2rem,5vw,4rem)] leading-tight text-charcoal mb-6 focus:outline-none">
+                    Interviewnya selesai. Kamu boleh bernapas lebih lega sekarang.
+                </h2>
+                <p class="font-sans text-softtext text-[17px] md:text-[19px] leading-[1.8] editorial-text mx-auto text-left md:text-center">
+                    Sejak pagi ada banyak hal yang kamu bawa: persiapan, rasa gugup, dan harapan. Lalu kamu masuk, menjalaninya, dan keluar setelah menyampaikan yang terbaik yang kamu punya. Sekarang, izinkan dirimu menikmati rasa lega itu sebentar.
+                </p>
+            </div>
+        </section>
+
+        <section class="py-20 md:py-28 px-5 md:px-6 bg-lavender-50">
+            <div class="max-w-2xl mx-auto gs-reveal">
+                <h3 class="font-serif text-[30px] md:text-[36px] text-charcoal mb-7 text-center md:text-left">
+                    Ada banyak hal sebelum kata selesai
+                </h3>
+                <div class="space-y-5 font-sans text-softtext text-[17px] md:text-[19px] leading-[1.8] text-left">
+                    <p>
+                        Ada waktu yang kamu sisihkan untuk mempersiapkan diri, jadwal yang sempat berubah, dan pikiran yang mungkin sulit diam karena kali ini kamu harus datang langsung. Hal-hal itu tidak terlihat di ruang interview, tetapi tetap menjadi bagian penting dari perjalananmu pagi ini.
+                    </p>
+                    <p>
+                        Rasa gugup tidak mengurangi kemampuanmu. Kamu juga tidak perlu tampak tenang setiap saat untuk bisa melakukan sesuatu dengan baik. Yang penting, kamu tetap datang dan menjalaninya sampai selesai.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 md:py-32 px-5 md:px-6">
+            <div class="max-w-5xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+
+                    <div class="gs-card relative p-7 md:p-8 rounded-2xl bg-white/50 border border-lavender-300/30 shadow-[0_4px_24px_rgba(113,88,135,0.06)]">
+                        <div class="w-10 h-10 rounded-full bg-lavender-50 flex items-center justify-center text-lavender-700 mb-5 border border-lavender-300/40">
+                            <i data-lucide="sunrise" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="font-serif text-xl text-charcoal mb-3">Datang lebih pagi</h4>
+                        <p class="font-sans text-softtext text-[15px] md:text-[16px] leading-[1.75]">
+                            Perjalanan yang kamu kira akan macet ternyata hanya sekitar lima belas menit. Kamu sampai lebih awal, bahkan sebelum waktunya dimulai.
+                        </p>
+                    </div>
+
+                    <div class="gs-card relative p-7 md:p-8 rounded-2xl bg-white/50 border border-lavender-300/30 shadow-[0_4px_24px_rgba(113,88,135,0.06)] md:mt-8">
+                        <div class="w-10 h-10 rounded-full bg-lavender-50 flex items-center justify-center text-gold-500 mb-5 border border-gold-300/40">
+                            <i data-lucide="clock" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="font-serif text-xl text-charcoal mb-3">Menunggu di lantai tiga</h4>
+                        <p class="font-sans text-softtext text-[15px] md:text-[16px] leading-[1.75]">
+                            Kamu menunggu bersama Iwa di lantai tiga. Tidak lama kemudian, pesan untuk memastikan kamu sudah sampai pun datang.
+                        </p>
+                    </div>
+
+                    <div class="gs-card relative p-7 md:p-8 rounded-2xl bg-white/50 border border-lavender-300/30 shadow-[0_4px_24px_rgba(113,88,135,0.06)] md:mt-16">
+                        <div class="w-10 h-10 rounded-full bg-lavender-50 flex items-center justify-center text-lavender-700 mb-5 border border-lavender-300/40">
+                            <i data-lucide="door-open" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="font-serif text-xl text-charcoal mb-3">Selesai dengan lega</h4>
+                        <p class="font-sans text-softtext text-[15px] md:text-[16px] leading-[1.75]">
+                            Sekitar satu jam kemudian, kabar darimu datang: semuanya berjalan lancar. Satu hal yang sejak pagi memenuhi kepala akhirnya berhasil kamu lewati.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 md:py-32 px-5 md:px-6 bg-lavender-50 relative">
+            <div class="max-w-3xl mx-auto text-center gs-reveal">
+                <i data-lucide="quote" class="w-8 h-8 mx-auto text-lavender-300 mb-7" aria-hidden="true"></i>
+                <blockquote class="font-serif text-[clamp(1.75rem,4vw,3rem)] leading-snug text-charcoal mb-10">
+                    Yang membuatku bangga bukan sekadar karena interview tadi berjalan lancar. Kamu memilih untuk datang dan menghadapi sesuatu yang sempat membuatmu gugup.
+                </blockquote>
+                <div class="space-y-5 font-sans text-softtext text-[17px] md:text-[19px] leading-[1.8] text-left editorial-text mx-auto">
+                    <p>
+                        Sekarang bagian yang bisa kamu usahakan sudah selesai. Hasil akhirnya memang belum ada di tangan kita, tetapi masa menunggu tidak seharusnya mengecilkan apa yang sudah kamu lakukan hari ini.
+                    </p>
+                    <p>
+                        Kalau nanti kabarnya sesuai dengan yang kamu harapkan, aku akan ikut senang. Kalau jalannya ternyata berbeda, pengalaman hari ini tetap berharga. Satu keputusan tidak pernah cukup untuk menentukan seluruh kemampuan ataupun masa depan seseorang.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 md:py-32 px-5 md:px-6 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none" aria-hidden="true">
+                <div class="w-[26rem] h-[26rem] bg-gold-500 rounded-full blur-[100px]"></div>
+            </div>
+
+            <div class="max-w-2xl mx-auto relative z-10 gs-reveal">
+                <h3 class="font-serif text-[30px] md:text-[36px] text-charcoal mb-7 text-center md:text-left">
+                    Semoga yang baik menemukan jalannya
+                </h3>
+                <div class="space-y-5 font-sans text-softtext text-[17px] md:text-[19px] leading-[1.8] bg-ivory/60 p-7 md:p-8 rounded-2xl border border-lavender-300/30 text-left">
+                    <p>
+                        Semoga usaha yang sudah kamu berikan bertemu dengan kesempatan yang tepat. Semoga orang-orang yang tadi berbicara denganmu dapat melihat kesungguhan dan potensi yang kamu bawa.
+                    </p>
+                    <p>
+                        Sambil menunggu, kamu tidak perlu menebak-nebak semua kemungkinan. Istirahat saja dulu. Aku akan tetap mendoakan agar kabar yang datang nanti menjadi kabar yang baik untukmu.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 px-5 md:px-6">
+            <div class="max-w-xl mx-auto gs-reveal">
+                <div class="relative p-7 md:p-10 rounded-lg bg-ivory border border-lavender-300/40 shadow-sm">
+                    <div class="absolute -top-3 left-7 bg-ivory px-3 font-serif italic text-base text-lavender-700">
+                        Setelah semuanya selesai
+                    </div>
+                    <p class="font-sans text-charcoal text-[17px] md:text-[19px] leading-[1.8] mb-6 text-left">
+                        Sekarang waktunya makan dengan tenang dan memberi kepala sedikit ruang untuk beristirahat. Ada usaha yang tetap pantas dihargai bahkan sebelum pengumumannya datang.
+                    </p>
+                    <p class="font-sans text-softtext text-[15px] md:text-[16px] leading-[1.75] p-4 bg-lavender-50 rounded border border-lavender-100 text-left">
+                        Anggap saja FM hari ini sebagai penutup sederhana untuk satu mini quest yang sudah kamu selesaikan.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="min-h-[75svh] flex flex-col justify-center items-center px-5 md:px-6 py-16 text-center relative">
+            <div class="max-w-2xl mx-auto gs-reveal">
+                <h2 class="font-serif text-[clamp(2.25rem,6vw,4rem)] text-charcoal mb-7">
+                    Well done, Ka Saa.
+                </h2>
+                <div class="space-y-5 font-sans text-softtext text-[17px] md:text-[19px] leading-[1.8] editorial-text mx-auto mb-12 text-left md:text-center">
+                    <p>
+                        Hari ini kamu sudah melakukan bagianmu dengan baik. Tidak ada lagi yang perlu dikejar atau dipikirkan sekarang.
+                    </p>
+                    <p>
+                        Semoga kabar yang kamu tunggu segera datang. Sampai saat itu, nikmati dulu rasa lega setelah melewati pagi yang panjang.
+                    </p>
+                </div>
+
+                <div class="font-serif italic text-lg text-charcoal mb-6">
+                    Jakarta, dengan doa-doa baik yang tetap menyertaimu.
+                </div>
+                <div class="font-sans text-sm tracking-[0.14em] uppercase text-lavender-700">
+                    I am rooting for you, always.
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        (function () {
+            var hasGsap = typeof window.gsap !== 'undefined';
+            var hasScrollTrigger = hasGsap && typeof window.ScrollTrigger !== 'undefined';
+            if (hasGsap && hasScrollTrigger) {
+                gsap.registerPlugin(ScrollTrigger);
+            }
+
+            if (
+                typeof window.lucide !== 'undefined' &&
+                typeof window.lucide.createIcons === 'function'
+            ) {
+                window.lucide.createIcons();
+            }
+
+            var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            var openTitle = document.getElementById('open-title');
+            var openSubtitle = document.getElementById('open-subtitle');
+            var openEnvelope = document.getElementById('open-envelope');
+            var envelopeFlap = document.getElementById('envelope-flap');
+            var letterCard = document.getElementById('letter-card');
+            var openBtn = document.getElementById('btn-open-letter');
+            var openingScreen = document.getElementById('opening-screen');
+            var mainContent = document.getElementById('main-content');
+            var heroTitle = document.getElementById('hero-title');
+            var progressBar = document.getElementById('progress-bar');
+
+            var openingItems = [openTitle, openSubtitle, openEnvelope, openBtn];
+
+            function setupProgressBar() {
+                var ticking = false;
+
+                function updateProgress() {
+                    var doc = document.documentElement;
+                    var scrollTop = window.pageYOffset || doc.scrollTop || document.body.scrollTop || 0;
+                    var scrollHeight = doc.scrollHeight - doc.clientHeight;
+                    var pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+                    progressBar.style.width = pct + '%';
+                    ticking = false;
+                }
+
+                window.addEventListener('scroll', function () {
+                    if (!ticking) {
+                        window.requestAnimationFrame(updateProgress);
+                        ticking = true;
+                    }
+                });
+
+                updateProgress();
+            }
+
+            function initScrollReveals() {
+                if (!hasScrollTrigger || prefersReducedMotion) {
+                    document.querySelectorAll('.gs-reveal, .gs-card').forEach(function (el) {
+                        el.style.opacity = 1;
+                    });
+                    return;
+                }
+
+                var reveals = gsap.utils.toArray('.gs-reveal');
+                reveals.forEach(function (elem) {
+                    gsap.fromTo(elem,
+                        { autoAlpha: 0, y: 20 },
+                        {
+                            autoAlpha: 1,
+                            y: 0,
+                            duration: 0.72,
+                            ease: 'power2.out',
+                            scrollTrigger: {
+                                trigger: elem,
+                                start: 'top 90%',
+                                once: true
+                            }
+                        }
+                    );
+                });
+
+                var cardGroups = document.querySelectorAll('.grid');
+                cardGroups.forEach(function (group) {
+                    var cards = group.querySelectorAll('.gs-card');
+                    if (cards.length === 0) return;
+                    gsap.fromTo(cards,
+                        { autoAlpha: 0, y: 16 },
+                        {
+                            autoAlpha: 1,
+                            y: 0,
+                            duration: 0.7,
+                            stagger: 0.08,
+                            ease: 'power2.out',
+                            scrollTrigger: {
+                                trigger: group,
+                                start: 'top 90%',
+                                once: true
+                            }
+                        }
+                    );
+                });
+            }
+
+            function finishOpening() {
+                openingScreen.style.display = 'none';
+                openingScreen.setAttribute('aria-hidden', 'true');
+                mainContent.style.opacity = '1';
+
+                if (envelopeFlap) envelopeFlap.style.removeProperty('will-change');
+                if (letterCard) letterCard.style.removeProperty('will-change');
+
+                if (heroTitle && typeof heroTitle.focus === 'function') {
+                    heroTitle.focus({ preventScroll: true });
+                }
+
+                if (hasScrollTrigger) {
+                    ScrollTrigger.refresh();
+                }
+
+                initScrollReveals();
+                setupProgressBar();
+            }
+
+            var opened = false;
+
+            openBtn.addEventListener('click', function () {
+                if (opened) return;
+                opened = true;
+                openBtn.disabled = true;
+
+                mainContent.style.display = 'block';
+                mainContent.style.opacity = '0';
+
+                if (prefersReducedMotion) {
+                    finishOpening();
+                    return;
+                }
+
+                if (!hasGsap) {
+                    openingScreen.classList.add('opening-fallback-hide');
+                    window.setTimeout(finishOpening, 700);
+                    return;
+                }
+
+                if (envelopeFlap) envelopeFlap.style.willChange = 'transform';
+                if (letterCard) letterCard.style.willChange = 'transform';
+
+                gsap.set(envelopeFlap, { rotationX: 0, force3D: true });
+                gsap.set(letterCard, { yPercent: 0, rotation: 0, scale: 1, force3D: true });
+
+                var timeline = gsap.timeline({
+                    defaults: { overwrite: 'auto' },
+                    onComplete: finishOpening
+                });
+
+                timeline
+                    .to(envelopeFlap, {
+                        rotationX: -180,
+                        duration: 0.5,
+                        ease: 'power2.inOut',
+                        force3D: true
+                    })
+                    .to(letterCard, {
+                        yPercent: -74,
+                        rotation: -0.8,
+                        scale: 1.02,
+                        duration: 0.62,
+                        ease: 'power3.out'
+                    }, '-=0.1')
+                    .to({}, { duration: 0.08 })
+                    .to(openingItems, {
+                        autoAlpha: 0,
+                        y: -8,
+                        duration: 0.3,
+                        stagger: 0.02,
+                        ease: 'power2.inOut'
+                    })
+                    .to(openingScreen, {
+                        autoAlpha: 0,
+                        duration: 0.45,
+                        ease: 'power2.inOut'
+                    }, '-=0.06')
+                    .to(mainContent, {
+                        opacity: 1,
+                        duration: 0.45,
+                        ease: 'power2.out'
+                    }, '<');
+            });
+
+            if (!prefersReducedMotion) {
+                var openingReadyItems = openingItems.filter(Boolean);
+                if (hasGsap) {
+                    gsap.to(openingReadyItems, {
+                        opacity: 1,
+                        duration: 0.75,
+                        stagger: 0.1,
+                        ease: 'power2.out',
+                        delay: 0.2
+                    });
+                } else {
+                    openingReadyItems.forEach(function (el) {
+                        el.style.opacity = 1;
+                    });
+                }
+            } else {
+                openingItems.filter(Boolean).forEach(function (el) {
+                    el.style.opacity = 1;
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

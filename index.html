@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Satu pagi yang sudah kamu lewati dengan baik.">
+    <meta name="description" content="Sebuah pesan untuk Ka Saa setelah interview.">
     <meta name="theme-color" content="#FCFAFD">
     <title>Untuk Ka Saa</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23F0EAF7'/%3E%3Cpath d='M18 18h8v12l11-12h10L34 32l14 14H37L26 34v12h-8z' fill='%23715887'/%3E%3C/svg%3E">
@@ -148,11 +148,62 @@
         }
 
         .editorial-text {
-            max-width: 62ch;
+            max-width: 58ch;
         }
 
         p {
             line-height: 1.8;
+        }
+
+        main > section {
+            position: relative;
+        }
+
+        main > section:not(:first-child)::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 72px;
+            height: 1px;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, transparent, var(--lavender-300), transparent);
+        }
+
+        .section-kicker {
+            display: block;
+            margin-bottom: 0.9rem;
+            color: var(--lavender-700);
+            font-size: 0.875rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .dropcap::first-letter {
+            float: left;
+            margin: 0.08em 0.12em 0 0;
+            color: var(--lavender-700);
+            font-family: 'Playfair Display', serif;
+            font-size: 3.25rem;
+            line-height: 0.8;
+        }
+
+        .book-quote {
+            position: relative;
+            border-left: 2px solid var(--lavender-300);
+        }
+
+        .book-quote::before {
+            content: '\201C';
+            position: absolute;
+            top: -1.1rem;
+            left: 1rem;
+            color: var(--lavender-300);
+            font-family: 'Playfair Display', serif;
+            font-size: 5.5rem;
+            line-height: 1;
+            opacity: 0.65;
+            pointer-events: none;
         }
 
         .btn-open {
@@ -275,6 +326,16 @@
                 animation: none !important;
             }
         }
+
+        @media (max-width: 639px) {
+            .dropcap::first-letter {
+                font-size: 2.8rem;
+            }
+
+            main > section:not(:first-child)::before {
+                width: 54px;
+            }
+        }
     </style>
 </head>
 <body class="font-sans antialiased text-charcoal">
@@ -300,7 +361,7 @@
                 Untuk Ka Saa
             </h1>
             <p class="font-serif italic text-lg md:text-xl text-lavender-700 mb-8 opacity-0" id="open-subtitle">
-                Ada satu hal yang ingin aku bilang setelah pagi yang panjang ini.
+                Sedikit pesan setelah pagi yang cukup panjang.
             </p>
 
             <div class="envelope-wrap mx-auto mb-10 opacity-0" id="open-envelope" aria-hidden="true">
@@ -312,7 +373,7 @@
             </div>
 
             <button id="btn-open-letter" type="button" class="btn-open opacity-0 border border-lavender-700/50 text-charcoal px-8 py-3 rounded-full font-normal tracking-[0.14em] text-sm uppercase focus-visible:outline focus-visible:outline-2 focus-visible:outline-lavender-700" aria-label="Buka pesan untuk Ka Saa">
-                Baca Pesannya
+                Baca pesannya
             </button>
         </div>
     </section>
@@ -329,29 +390,30 @@
             </div>
 
             <div class="max-w-3xl relative z-10">
-                <span class="block font-sans text-sm uppercase tracking-[0.18em] text-lavender-700 mb-6">
-                    Setelah interview tadi
+                <span class="section-kicker mb-6">
+                    After the interview
                 </span>
                 <h2 tabindex="-1" id="hero-title" class="font-serif text-[clamp(2rem,5vw,4rem)] leading-tight text-charcoal mb-6 focus:outline-none">
-                    Interviewnya selesai. Kamu boleh bernapas lebih lega sekarang.
+                    Interview-nya sudah selesai. Sekarang, kamu boleh bernapas lebih tenang.
                 </h2>
                 <p class="font-sans text-softtext text-[17px] md:text-[19px] leading-[1.8] editorial-text mx-auto text-left md:text-center">
-                    Sejak pagi ada banyak hal yang kamu bawa: persiapan, rasa gugup, dan harapan. Lalu kamu masuk, menjalaninya, dan keluar setelah menyampaikan yang terbaik yang kamu punya. Sekarang, izinkan dirimu menikmati rasa lega itu sebentar.
+                    Kamu sudah datang membawa semua yang sempat kamu siapkan, sekaligus rasa gugup yang sejak pagi ikut menemani. Lalu kamu masuk dan menjalani semuanya sampai selesai. Before anything else, aku cuma ingin bilang: kamu sudah melakukannya dengan baik.
                 </p>
             </div>
         </section>
 
         <section class="py-20 md:py-28 px-5 md:px-6 bg-lavender-50">
             <div class="max-w-2xl mx-auto gs-reveal">
+                <span class="section-kicker text-center md:text-left">What no one saw</span>
                 <h3 class="font-serif text-[30px] md:text-[36px] text-charcoal mb-7 text-center md:text-left">
-                    Ada banyak hal sebelum kata selesai
+                    Yang sudah kamu lalui sebelum pagi ini
                 </h3>
                 <div class="space-y-5 font-sans text-softtext text-[17px] md:text-[19px] leading-[1.8] text-left">
-                    <p>
-                        Ada waktu yang kamu sisihkan untuk mempersiapkan diri, jadwal yang sempat berubah, dan pikiran yang mungkin sulit diam karena kali ini kamu harus datang langsung. Hal-hal itu tidak terlihat di ruang interview, tetapi tetap menjadi bagian penting dari perjalananmu pagi ini.
+                    <p class="dropcap">
+                        Interview tadi mungkin berlangsung kurang dari satu jam, tetapi usahamu tentu tidak dimulai ketika kamu masuk ke ruangan. Ada waktu yang kamu pakai untuk mempersiapkan diri, jadwal yang sempat berubah, dan pikiran yang mungkin terus berjalan bahkan ketika kamu sedang mencoba beristirahat.
                     </p>
                     <p>
-                        Rasa gugup tidak mengurangi kemampuanmu. Kamu juga tidak perlu tampak tenang setiap saat untuk bisa melakukan sesuatu dengan baik. Yang penting, kamu tetap datang dan menjalaninya sampai selesai.
+                        Aku tahu rasa gugupnya tidak langsung hilang. Namun, kamu tidak perlu menunggu rasa takut itu pergi untuk bisa melangkah dengan baik. Sometimes courage is simply doing it while your heart is still beating a little faster. Dan hari ini, kamu sudah membuktikannya.
                     </p>
                 </div>
             </div>
@@ -359,35 +421,44 @@
 
         <section class="py-20 md:py-32 px-5 md:px-6">
             <div class="max-w-5xl mx-auto">
+                <div class="max-w-2xl mx-auto mb-12 md:mb-16 text-center gs-reveal">
+                    <span class="section-kicker">This morning, in three moments</span>
+                    <h3 class="font-serif text-[30px] md:text-[36px] text-charcoal">
+                        Pagi ini, dalam tiga momen kecil
+                    </h3>
+                </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
 
-                    <div class="gs-card relative p-7 md:p-8 rounded-2xl bg-white/50 border border-lavender-300/30 shadow-[0_4px_24px_rgba(113,88,135,0.06)]">
+                    <div class="gs-card relative p-7 md:p-8 rounded-[4px] bg-ivory/80 border border-lavender-300/35 shadow-[0_12px_32px_rgba(113,88,135,0.06)]">
+                        <span class="absolute top-6 right-6 font-serif italic text-sm text-lavender-500" aria-hidden="true">01</span>
                         <div class="w-10 h-10 rounded-full bg-lavender-50 flex items-center justify-center text-lavender-700 mb-5 border border-lavender-300/40">
                             <i data-lucide="sunrise" class="w-5 h-5"></i>
                         </div>
-                        <h4 class="font-serif text-xl text-charcoal mb-3">Datang lebih pagi</h4>
+                        <h4 class="font-serif text-xl text-charcoal mb-3">Lima belas menit</h4>
                         <p class="font-sans text-softtext text-[15px] md:text-[16px] leading-[1.75]">
-                            Perjalanan yang kamu kira akan macet ternyata hanya sekitar lima belas menit. Kamu sampai lebih awal, bahkan sebelum waktunya dimulai.
+                            Perjalanan yang kamu kira akan macet ternyata hanya membutuhkan waktu sekitar lima belas menit. Kamu sampai lebih awal dan memiliki sedikit waktu untuk menenangkan diri.
                         </p>
                     </div>
 
-                    <div class="gs-card relative p-7 md:p-8 rounded-2xl bg-white/50 border border-lavender-300/30 shadow-[0_4px_24px_rgba(113,88,135,0.06)] md:mt-8">
+                    <div class="gs-card relative p-7 md:p-8 rounded-[4px] bg-ivory/80 border border-lavender-300/35 shadow-[0_12px_32px_rgba(113,88,135,0.06)] md:mt-8">
+                        <span class="absolute top-6 right-6 font-serif italic text-sm text-lavender-500" aria-hidden="true">02</span>
                         <div class="w-10 h-10 rounded-full bg-lavender-50 flex items-center justify-center text-gold-500 mb-5 border border-gold-300/40">
                             <i data-lucide="clock" class="w-5 h-5"></i>
                         </div>
-                        <h4 class="font-serif text-xl text-charcoal mb-3">Menunggu di lantai tiga</h4>
+                        <h4 class="font-serif text-xl text-charcoal mb-3">Lantai tiga</h4>
                         <p class="font-sans text-softtext text-[15px] md:text-[16px] leading-[1.75]">
-                            Kamu menunggu bersama Iwa di lantai tiga. Tidak lama kemudian, pesan untuk memastikan kamu sudah sampai pun datang.
+                            Kamu menunggu bersama Iwa, lalu menerima pesan untuk memastikan bahwa kamu sudah sampai. Tidak lama setelah itu, bagian yang kamu tunggu pun dimulai.
                         </p>
                     </div>
 
-                    <div class="gs-card relative p-7 md:p-8 rounded-2xl bg-white/50 border border-lavender-300/30 shadow-[0_4px_24px_rgba(113,88,135,0.06)] md:mt-16">
+                    <div class="gs-card relative p-7 md:p-8 rounded-[4px] bg-ivory/80 border border-lavender-300/35 shadow-[0_12px_32px_rgba(113,88,135,0.06)] md:mt-16">
+                        <span class="absolute top-6 right-6 font-serif italic text-sm text-lavender-500" aria-hidden="true">03</span>
                         <div class="w-10 h-10 rounded-full bg-lavender-50 flex items-center justify-center text-lavender-700 mb-5 border border-lavender-300/40">
                             <i data-lucide="door-open" class="w-5 h-5"></i>
                         </div>
-                        <h4 class="font-serif text-xl text-charcoal mb-3">Selesai dengan lega</h4>
+                        <h4 class="font-serif text-xl text-charcoal mb-3">Pukul 09.28</h4>
                         <p class="font-sans text-softtext text-[15px] md:text-[16px] leading-[1.75]">
-                            Sekitar satu jam kemudian, kabar darimu datang: semuanya berjalan lancar. Satu hal yang sejak pagi memenuhi kepala akhirnya berhasil kamu lewati.
+                            Pesan darimu akhirnya datang: semuanya telah selesai dengan baik. Saat itu, rasa lega akhirnya memiliki tempat.
                         </p>
                     </div>
 
@@ -399,14 +470,11 @@
             <div class="max-w-3xl mx-auto text-center gs-reveal">
                 <i data-lucide="quote" class="w-8 h-8 mx-auto text-lavender-300 mb-7" aria-hidden="true"></i>
                 <blockquote class="font-serif text-[clamp(1.75rem,4vw,3rem)] leading-snug text-charcoal mb-10">
-                    Yang membuatku bangga bukan sekadar karena interview tadi berjalan lancar. Kamu memilih untuk datang dan menghadapi sesuatu yang sempat membuatmu gugup.
+                    Aku bangga bukan hanya karena interview tadi berjalan lancar. Aku bangga karena kamu tetap datang dan menjalaninya, meski rasa gugup masih ada.
                 </blockquote>
-                <div class="space-y-5 font-sans text-softtext text-[17px] md:text-[19px] leading-[1.8] text-left editorial-text mx-auto">
+                <div class="font-sans text-softtext text-[17px] md:text-[19px] leading-[1.8] text-left editorial-text mx-auto">
                     <p>
-                        Sekarang bagian yang bisa kamu usahakan sudah selesai. Hasil akhirnya memang belum ada di tangan kita, tetapi masa menunggu tidak seharusnya mengecilkan apa yang sudah kamu lakukan hari ini.
-                    </p>
-                    <p>
-                        Kalau nanti kabarnya sesuai dengan yang kamu harapkan, aku akan ikut senang. Kalau jalannya ternyata berbeda, pengalaman hari ini tetap berharga. Satu keputusan tidak pernah cukup untuk menentukan seluruh kemampuan ataupun masa depan seseorang.
+                        Hasil akhirnya mungkin belum kita tahu, tetapi satu keputusan tidak bisa merangkum seluruh kemampuanmu. Kalau nanti kabarnya sesuai dengan yang kamu harapkan, aku akan ikut bahagia. Kalau ternyata jalannya berbeda, semua hal baik yang ada dalam dirimu tetap tidak berkurang. Whatever the result may be, none of it makes me believe in you any less.
                     </p>
                 </div>
             </div>
@@ -418,31 +486,33 @@
             </div>
 
             <div class="max-w-2xl mx-auto relative z-10 gs-reveal">
+                <span class="section-kicker text-center md:text-left">For what comes next</span>
                 <h3 class="font-serif text-[30px] md:text-[36px] text-charcoal mb-7 text-center md:text-left">
-                    Semoga yang baik menemukan jalannya
+                    Untuk kabar yang sedang kita tunggu
                 </h3>
                 <div class="space-y-5 font-sans text-softtext text-[17px] md:text-[19px] leading-[1.8] bg-ivory/60 p-7 md:p-8 rounded-2xl border border-lavender-300/30 text-left">
                     <p>
-                        Semoga usaha yang sudah kamu berikan bertemu dengan kesempatan yang tepat. Semoga orang-orang yang tadi berbicara denganmu dapat melihat kesungguhan dan potensi yang kamu bawa.
+                        Aku berdoa semoga semua usaha yang sudah kamu berikan bertemu dengan kesempatan yang tepat. Semoga orang-orang yang tadi berbicara denganmu dapat melihat kesungguhan dan potensi yang kamu miliki.
                     </p>
                     <p>
-                        Sambil menunggu, kamu tidak perlu menebak-nebak semua kemungkinan. Istirahat saja dulu. Aku akan tetap mendoakan agar kabar yang datang nanti menjadi kabar yang baik untukmu.
+                        Untuk sekarang, kamu tidak perlu menebak-nebak semua kemungkinan. Biarkan waktu menyelesaikan bagian yang memang belum bisa kita kendalikan. I hope it's the good news you've been waiting for.
                     </p>
                 </div>
             </div>
         </section>
 
         <section class="py-20 px-5 md:px-6">
-            <div class="max-w-xl mx-auto gs-reveal">
-                <div class="relative p-7 md:p-10 rounded-lg bg-ivory border border-lavender-300/40 shadow-sm">
-                    <div class="absolute -top-3 left-7 bg-ivory px-3 font-serif italic text-base text-lavender-700">
-                        Setelah semuanya selesai
-                    </div>
-                    <p class="font-sans text-charcoal text-[17px] md:text-[19px] leading-[1.8] mb-6 text-left">
-                        Sekarang waktunya makan dengan tenang dan memberi kepala sedikit ruang untuk beristirahat. Ada usaha yang tetap pantas dihargai bahkan sebelum pengumumannya datang.
-                    </p>
-                    <p class="font-sans text-softtext text-[15px] md:text-[16px] leading-[1.75] p-4 bg-lavender-50 rounded border border-lavender-100 text-left">
-                        Anggap saja FM hari ini sebagai penutup sederhana untuk satu mini quest yang sudah kamu selesaikan.
+            <div class="max-w-2xl mx-auto gs-reveal">
+                <span class="section-kicker text-center md:text-left">A reminder while waiting</span>
+                <div class="book-quote relative p-7 pt-14 md:p-10 md:pt-16 bg-ivory border-y border-r border-lavender-300/35 shadow-[0_12px_40px_rgba(113,88,135,0.06)]">
+                    <blockquote class="relative z-10 font-serif italic text-[clamp(1.45rem,3vw,2rem)] leading-[1.5] text-charcoal mb-4">
+                        You have power over your mind, not outside events. Realize this, and you will find strength.
+                    </blockquote>
+                    <cite class="block font-sans not-italic text-sm tracking-[0.08em] uppercase text-lavender-700 mb-9">
+                        Marcus Aurelius, Meditations
+                    </cite>
+                    <p class="font-sans text-softtext text-[17px] md:text-[19px] leading-[1.8] mb-6 text-left">
+                        Kalimat ini mengingatkanku bahwa ketenangan tidak selalu datang karena semua pertanyaan sudah terjawab. Sometimes peace begins when we stop asking today to reveal what only time can tell. Jadi setelah pagi yang cukup panjang ini, makan dulu dengan tenang, istirahatkan kepala, dan biarkan dirimu menikmati jeda.
                     </p>
                 </div>
             </div>
@@ -455,15 +525,15 @@
                 </h2>
                 <div class="space-y-5 font-sans text-softtext text-[17px] md:text-[19px] leading-[1.8] editorial-text mx-auto mb-12 text-left md:text-center">
                     <p>
-                        Hari ini kamu sudah melakukan bagianmu dengan baik. Tidak ada lagi yang perlu dikejar atau dipikirkan sekarang.
+                        Semoga setelah ini kamu bisa pulang dengan pikiran yang lebih ringan. Kamu tidak perlu memutar ulang setiap jawaban atau mencari kekurangan dari sesuatu yang sudah kamu selesaikan.
                     </p>
                     <p>
-                        Semoga kabar yang kamu tunggu segera datang. Sampai saat itu, nikmati dulu rasa lega setelah melewati pagi yang panjang.
+                        For today, this is enough. Besok boleh membawa cerita apa pun, tetapi malam ini kamu tidak perlu memikul semuanya lebih dulu.
                     </p>
                 </div>
 
                 <div class="font-serif italic text-lg text-charcoal mb-6">
-                    Jakarta, dengan doa-doa baik yang tetap menyertaimu.
+                    Dari Jakarta, aku akan tetap mendoakanmu.
                 </div>
                 <div class="font-sans text-sm tracking-[0.14em] uppercase text-lavender-700">
                     I am rooting for you, always.
